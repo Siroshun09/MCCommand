@@ -1,0 +1,173 @@
+/*
+ *     Copyright 2020 Siroshun09
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ */
+
+package com.github.siroshun09.mccommand.common.argument;
+
+import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
+
+/**
+ * Represents a command argument.
+ */
+public interface Argument {
+
+    /**
+     * Creates an {@link Argument} from an index and a string.
+     * <p>
+     * The {@link Argument} returned by this method implements {@link Object#hashCode()}, {@link Object#equals(Object)}, and {@link Object#toString()}.
+     *
+     * @param index    the position of this argument
+     * @param argument the argument
+     * @return {@link Argument}
+     */
+    static Argument of(int index, @NotNull String argument) {
+        return new Argument() {
+            @Override
+            public int getIndex() {
+                return index;
+            }
+
+            @Override
+            public @NotNull String get() {
+                return argument;
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hash(index, argument);
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) {
+                    return true;
+                }
+
+                if (!(o instanceof Argument)) {
+                    return false;
+                }
+
+                Argument that = (Argument) o;
+
+                return index == that.getIndex() && argument.equals(that.get());
+            }
+
+            @Override
+            public String toString() {
+                return "Argument{" +
+                        "index=" + index +
+                        ", argument=" + argument +
+                        '}';
+            }
+        };
+    }
+
+    /**
+     * Gets the position of this argument.
+     *
+     * @return the position of this argument
+     */
+    int getIndex();
+
+    /**
+     * Gets this argument as a string.
+     *
+     * @return this argument as a string
+     */
+    @NotNull
+    String get();
+
+    /**
+     * Parses the argument to {@link Boolean}.
+     *
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#BOOLEAN}
+     */
+    @Nullable
+    default Boolean parseBoolean() {
+        return ArgumentParser.BOOLEAN.parse(this);
+    }
+
+    /**
+     * Parses the argument to {@link Short}.
+     *
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#SHORT}
+     */
+    @Nullable
+    default Short parseShort() {
+        return ArgumentParser.SHORT.parse(this);
+    }
+
+    /**
+     * Parses the argument to {@link Integer}.
+     *
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#INTEGER}
+     */
+    @Nullable
+    default Integer parseInteger() {
+        return ArgumentParser.INTEGER.parse(this);
+    }
+
+    /**
+     * Parses the argument to {@link Long}.
+     *
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#LONG}
+     */
+    @Nullable
+    default Long parseLong() {
+        return ArgumentParser.LONG.parse(this);
+    }
+
+    /**
+     * Parses the argument to {@link Float}.
+     *
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#FLOAT}
+     */
+    @Nullable
+    default Float parseFloat() {
+        return ArgumentParser.FLOAT.parse(this);
+    }
+
+    /**
+     * Parses the argument to {@link Double}.
+     *
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#DOUBLE}
+     */
+    @Nullable
+    default Double parseDouble() {
+        return ArgumentParser.DOUBLE.parse(this);
+    }
+
+    /**
+     * Parses the argument using the specified parser.
+     *
+     * @param parser the parser
+     * @param <T>    the value type
+     * @return the result of parsing the arguments, or {@code null} if it fails.
+     * @see ArgumentParser#parse(Argument)
+     */
+    default <T> T parse(ArgumentParser<T> parser) {
+        return parser.parse(this);
+    }
+}
