@@ -1,5 +1,5 @@
 [![Latest Version](https://img.shields.io/bintray/v/siroshun09/maven/MCCommand?label=Latest)](https://bintray.com/siroshun09/maven/MCCommand/_latestVersion)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Siroshun09/MCCommand/Maven?label=Build)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Siroshun09/MCCommand/Java%20CI?label=Build)
 ![GitHub](https://img.shields.io/github/license/Siroshun09/MCCommand?label=License)
 [![Bintray](https://img.shields.io/bintray/v/siroshun09/maven/MCCommand?color=orange&label=Javadoc)](https://siroshun09.github.io/mccommand/)
 
@@ -14,7 +14,6 @@ A library to help implement Bukkit and BungeeCord commands.
 ```xml
     <repository>
         <id>jcenter</id>
-        <name>jcenter-bintray</name>
         <url>https://jcenter.bintray.com</url>
     </repository>
 ```
@@ -23,7 +22,7 @@ A library to help implement Bukkit and BungeeCord commands.
     <dependency>
         <groupId>com.github.siroshun09.mccommand</groupId>
         <artifactId>bukkit</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 ```
 
@@ -31,7 +30,7 @@ A library to help implement Bukkit and BungeeCord commands.
     <dependency>
         <groupId>com.github.siroshun09.mccommand</groupId>
         <artifactId>bungee</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 ```
 
@@ -45,13 +44,13 @@ A library to help implement Bukkit and BungeeCord commands.
 
 ```
     dependencies {
-        compile 'com.github.siroshun09.mccommand:bukkit:1.0.0'
+        compile 'com.github.siroshun09.mccommand:bukkit:1.1.0'
     }
 ```
 
 ```
     dependencies {
-        compile 'com.github.siroshun09.mccommand:bungee:1.0.0'
+        compile 'com.github.siroshun09.mccommand:bungee:1.1.0'
     }
 ```
 
