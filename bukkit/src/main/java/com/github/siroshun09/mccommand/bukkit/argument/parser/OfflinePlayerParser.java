@@ -23,6 +23,9 @@ import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * A class that parses an {@link Argument} to an {@link OfflinePlayer}.
+ */
 public class OfflinePlayerParser implements ArgumentParser<OfflinePlayer> {
 
     /**
