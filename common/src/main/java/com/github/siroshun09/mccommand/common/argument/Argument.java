@@ -17,6 +17,7 @@
 package com.github.siroshun09.mccommand.common.argument;
 
 import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;
+import com.github.siroshun09.mccommand.common.argument.parser.BasicParser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -97,66 +98,66 @@ public interface Argument {
      * Parses the argument to {@link Boolean}.
      *
      * @return the result of parsing the arguments, or {@code null} if it fails.
-     * @see ArgumentParser#BOOLEAN}
+     * @see BasicParser#BOOLEAN}
      */
     @Nullable
     default Boolean parseBoolean() {
-        return ArgumentParser.BOOLEAN.parse(this);
+        return BasicParser.BOOLEAN.parse(this);
     }
 
     /**
      * Parses the argument to {@link Short}.
      *
      * @return the result of parsing the arguments, or {@code null} if it fails.
-     * @see ArgumentParser#SHORT}
+     * @see BasicParser#SHORT}
      */
     @Nullable
     default Short parseShort() {
-        return ArgumentParser.SHORT.parse(this);
+        return BasicParser.SHORT.parse(this);
     }
 
     /**
      * Parses the argument to {@link Integer}.
      *
      * @return the result of parsing the arguments, or {@code null} if it fails.
-     * @see ArgumentParser#INTEGER}
+     * @see BasicParser#INTEGER}
      */
     @Nullable
     default Integer parseInteger() {
-        return ArgumentParser.INTEGER.parse(this);
+        return BasicParser.INTEGER.parse(this);
     }
 
     /**
      * Parses the argument to {@link Long}.
      *
      * @return the result of parsing the arguments, or {@code null} if it fails.
-     * @see ArgumentParser#LONG}
+     * @see BasicParser#LONG}
      */
     @Nullable
     default Long parseLong() {
-        return ArgumentParser.LONG.parse(this);
+        return BasicParser.LONG.parse(this);
     }
 
     /**
      * Parses the argument to {@link Float}.
      *
      * @return the result of parsing the arguments, or {@code null} if it fails.
-     * @see ArgumentParser#FLOAT}
+     * @see BasicParser#FLOAT}
      */
     @Nullable
     default Float parseFloat() {
-        return ArgumentParser.FLOAT.parse(this);
+        return BasicParser.FLOAT.parse(this);
     }
 
     /**
      * Parses the argument to {@link Double}.
      *
      * @return the result of parsing the arguments, or {@code null} if it fails.
-     * @see ArgumentParser#DOUBLE}
+     * @see BasicParser#DOUBLE}
      */
     @Nullable
     default Double parseDouble() {
-        return ArgumentParser.DOUBLE.parse(this);
+        return BasicParser.DOUBLE.parse(this);
     }
 
     /**
