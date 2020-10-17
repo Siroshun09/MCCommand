@@ -131,4 +131,24 @@ public class SubCommandHolder {
                     .findFirst();
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SubCommandHolder)) return false;
+        SubCommandHolder that = (SubCommandHolder) o;
+        return Objects.equals(subCommands, that.subCommands);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(subCommands);
+    }
+
+    @Override
+    public String toString() {
+        return "SubCommandHolder{" +
+                "subCommands=" + subCommands +
+                '}';
+    }
 }
