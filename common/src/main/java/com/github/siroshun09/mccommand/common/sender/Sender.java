@@ -16,6 +16,7 @@
 
 package com.github.siroshun09.mccommand.common.sender;
 
+import com.github.siroshun09.mcmessage.MessageReceiver;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -23,7 +24,7 @@ import java.util.UUID;
 /**
  * Interface that wraps a CommandSender that is different on different platforms.
  */
-public interface Sender {
+public interface Sender extends MessageReceiver {
 
     /**
      * Gets the {@link UUID} of the command sender.
@@ -44,15 +45,6 @@ public interface Sender {
      */
     @NotNull
     String getName();
-
-    /**
-     * Send a message.
-     * <p>
-     * This method does not colorize.
-     *
-     * @param message message to send.
-     */
-    void sendMessage(@NotNull String message);
 
     /**
      * Checks if the {@link Sender} has the requested permission.
