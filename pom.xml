@@ -82,6 +82,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.github.siroshun09.mcmessage</groupId>
+            <artifactId>mcmessage</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.6.2</version>
