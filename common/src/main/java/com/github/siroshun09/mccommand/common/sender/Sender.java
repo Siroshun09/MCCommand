@@ -47,6 +47,15 @@ public interface Sender extends MessageReceiver {
     String getName();
 
     /**
+     * Send a message.
+     * <p>
+     * This method does not colorize.
+     *
+     * @param message message to send.
+     */
+    void sendMessage(@NotNull String message);
+
+    /**
      * Checks if the {@link Sender} has the requested permission.
      *
      * @param perm a permission.
