@@ -23,6 +23,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -90,6 +91,17 @@ public class BungeeSender implements Sender {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public @NotNull Locale getLocale() {
+        Locale locale = null;
+
+        if (sender instanceof ProxiedPlayer) {
+            locale = ((ProxiedPlayer) sender).getLocale();
+        }
+
+        return locale != null ? locale : Locale.getDefault();
     }
 
     @Override
