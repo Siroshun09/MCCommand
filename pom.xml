@@ -91,7 +91,7 @@
         <dependency>
             <groupId>com.github.siroshun09.mcmessage</groupId>
             <artifactId>mcmessage</artifactId>
-            <version>1.0.1</version>
+            <version>1.1.0</version>
             <scope>compile</scope>
         </dependency>
 <!--        <dependency>
