@@ -96,6 +96,7 @@ public class BukkitSender implements Sender {
     @Override
     public @NotNull Locale getLocale() {
         Locale locale = null;
+
         if (sender instanceof Player) {
             locale = Translation.parseLocale(((Player) sender).getLocale());
         }
