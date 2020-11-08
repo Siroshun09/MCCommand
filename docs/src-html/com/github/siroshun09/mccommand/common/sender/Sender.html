@@ -28,68 +28,69 @@
 <span class="source-line-no">016</span><span id="line.16"></span>
 <span class="source-line-no">017</span><span id="line.17">package com.github.siroshun09.mccommand.common.sender;</span>
 <span class="source-line-no">018</span><span id="line.18"></span>
-<span class="source-line-no">019</span><span id="line.19">import org.jetbrains.annotations.NotNull;</span>
-<span class="source-line-no">020</span><span id="line.20"></span>
-<span class="source-line-no">021</span><span id="line.21">import java.util.UUID;</span>
-<span class="source-line-no">022</span><span id="line.22"></span>
-<span class="source-line-no">023</span><span id="line.23">/**</span>
-<span class="source-line-no">024</span><span id="line.24"> * Interface that wraps a CommandSender that is different on different platforms.</span>
-<span class="source-line-no">025</span><span id="line.25"> */</span>
-<span class="source-line-no">026</span><span id="line.26">public interface Sender {</span>
-<span class="source-line-no">027</span><span id="line.27"></span>
-<span class="source-line-no">028</span><span id="line.28">    /**</span>
-<span class="source-line-no">029</span><span id="line.29">     * Gets the {@link UUID} of the command sender.</span>
-<span class="source-line-no">030</span><span id="line.30">     * &lt;p&gt;</span>
-<span class="source-line-no">031</span><span id="line.31">     * If it is internal sender, returns {@link ConsoleSender#CONSOLE_UUID}.</span>
-<span class="source-line-no">032</span><span id="line.32">     *</span>
-<span class="source-line-no">033</span><span id="line.33">     * @return sender's {@link UUID}.</span>
-<span class="source-line-no">034</span><span id="line.34">     */</span>
-<span class="source-line-no">035</span><span id="line.35">    @NotNull</span>
-<span class="source-line-no">036</span><span id="line.36">    UUID getUUID();</span>
-<span class="source-line-no">037</span><span id="line.37"></span>
-<span class="source-line-no">038</span><span id="line.38">    /**</span>
-<span class="source-line-no">039</span><span id="line.39">     * Gets the name of the command sender.</span>
-<span class="source-line-no">040</span><span id="line.40">     * &lt;p&gt;</span>
-<span class="source-line-no">041</span><span id="line.41">     * If it is internal sender, returns {@link ConsoleSender#CONSOLE_NAME}.</span>
-<span class="source-line-no">042</span><span id="line.42">     *</span>
-<span class="source-line-no">043</span><span id="line.43">     * @return sender's name.</span>
-<span class="source-line-no">044</span><span id="line.44">     */</span>
-<span class="source-line-no">045</span><span id="line.45">    @NotNull</span>
-<span class="source-line-no">046</span><span id="line.46">    String getName();</span>
-<span class="source-line-no">047</span><span id="line.47"></span>
-<span class="source-line-no">048</span><span id="line.48">    /**</span>
-<span class="source-line-no">049</span><span id="line.49">     * Send a message.</span>
-<span class="source-line-no">050</span><span id="line.50">     * &lt;p&gt;</span>
-<span class="source-line-no">051</span><span id="line.51">     * This method does not colorize.</span>
-<span class="source-line-no">052</span><span id="line.52">     *</span>
-<span class="source-line-no">053</span><span id="line.53">     * @param message message to send.</span>
-<span class="source-line-no">054</span><span id="line.54">     */</span>
-<span class="source-line-no">055</span><span id="line.55">    void sendMessage(@NotNull String message);</span>
-<span class="source-line-no">056</span><span id="line.56"></span>
-<span class="source-line-no">057</span><span id="line.57">    /**</span>
-<span class="source-line-no">058</span><span id="line.58">     * Checks if the {@link Sender} has the requested permission.</span>
-<span class="source-line-no">059</span><span id="line.59">     *</span>
-<span class="source-line-no">060</span><span id="line.60">     * @param perm a permission.</span>
-<span class="source-line-no">061</span><span id="line.61">     * @return {@code true} if the sender have permission, {@code false} otherwise</span>
-<span class="source-line-no">062</span><span id="line.62">     */</span>
-<span class="source-line-no">063</span><span id="line.63">    boolean hasPermission(@NotNull String perm);</span>
-<span class="source-line-no">064</span><span id="line.64"></span>
-<span class="source-line-no">065</span><span id="line.65">    /**</span>
-<span class="source-line-no">066</span><span id="line.66">     * Checks if the sender is online.</span>
-<span class="source-line-no">067</span><span id="line.67">     *</span>
-<span class="source-line-no">068</span><span id="line.68">     * @return {@code true} if the sender is online, {@code false} otherwise.</span>
-<span class="source-line-no">069</span><span id="line.69">     */</span>
-<span class="source-line-no">070</span><span id="line.70">    boolean isOnline();</span>
-<span class="source-line-no">071</span><span id="line.71"></span>
-<span class="source-line-no">072</span><span id="line.72">    /**</span>
-<span class="source-line-no">073</span><span id="line.73">     * Checks if the sender is console.</span>
-<span class="source-line-no">074</span><span id="line.74">     *</span>
-<span class="source-line-no">075</span><span id="line.75">     * @return {@code true} if the sender is console, {@code false} otherwise.</span>
-<span class="source-line-no">076</span><span id="line.76">     */</span>
-<span class="source-line-no">077</span><span id="line.77">    default boolean isConsole() {</span>
-<span class="source-line-no">078</span><span id="line.78">        return getUUID().equals(ConsoleSender.CONSOLE_UUID);</span>
-<span class="source-line-no">079</span><span id="line.79">    }</span>
-<span class="source-line-no">080</span><span id="line.80">}</span>
+<span class="source-line-no">019</span><span id="line.19">import com.github.siroshun09.mcmessage.MessageReceiver;</span>
+<span class="source-line-no">020</span><span id="line.20">import org.jetbrains.annotations.NotNull;</span>
+<span class="source-line-no">021</span><span id="line.21"></span>
+<span class="source-line-no">022</span><span id="line.22">import java.util.UUID;</span>
+<span class="source-line-no">023</span><span id="line.23"></span>
+<span class="source-line-no">024</span><span id="line.24">/**</span>
+<span class="source-line-no">025</span><span id="line.25"> * Interface that wraps a CommandSender that is different on different platforms.</span>
+<span class="source-line-no">026</span><span id="line.26"> */</span>
+<span class="source-line-no">027</span><span id="line.27">public interface Sender extends MessageReceiver {</span>
+<span class="source-line-no">028</span><span id="line.28"></span>
+<span class="source-line-no">029</span><span id="line.29">    /**</span>
+<span class="source-line-no">030</span><span id="line.30">     * Gets the {@link UUID} of the command sender.</span>
+<span class="source-line-no">031</span><span id="line.31">     * &lt;p&gt;</span>
+<span class="source-line-no">032</span><span id="line.32">     * If it is internal sender, returns {@link ConsoleSender#CONSOLE_UUID}.</span>
+<span class="source-line-no">033</span><span id="line.33">     *</span>
+<span class="source-line-no">034</span><span id="line.34">     * @return sender's {@link UUID}.</span>
+<span class="source-line-no">035</span><span id="line.35">     */</span>
+<span class="source-line-no">036</span><span id="line.36">    @NotNull</span>
+<span class="source-line-no">037</span><span id="line.37">    UUID getUUID();</span>
+<span class="source-line-no">038</span><span id="line.38"></span>
+<span class="source-line-no">039</span><span id="line.39">    /**</span>
+<span class="source-line-no">040</span><span id="line.40">     * Gets the name of the command sender.</span>
+<span class="source-line-no">041</span><span id="line.41">     * &lt;p&gt;</span>
+<span class="source-line-no">042</span><span id="line.42">     * If it is internal sender, returns {@link ConsoleSender#CONSOLE_NAME}.</span>
+<span class="source-line-no">043</span><span id="line.43">     *</span>
+<span class="source-line-no">044</span><span id="line.44">     * @return sender's name.</span>
+<span class="source-line-no">045</span><span id="line.45">     */</span>
+<span class="source-line-no">046</span><span id="line.46">    @NotNull</span>
+<span class="source-line-no">047</span><span id="line.47">    String getName();</span>
+<span class="source-line-no">048</span><span id="line.48"></span>
+<span class="source-line-no">049</span><span id="line.49">    /**</span>
+<span class="source-line-no">050</span><span id="line.50">     * Send a message.</span>
+<span class="source-line-no">051</span><span id="line.51">     * &lt;p&gt;</span>
+<span class="source-line-no">052</span><span id="line.52">     * This method does not colorize.</span>
+<span class="source-line-no">053</span><span id="line.53">     *</span>
+<span class="source-line-no">054</span><span id="line.54">     * @param message message to send.</span>
+<span class="source-line-no">055</span><span id="line.55">     */</span>
+<span class="source-line-no">056</span><span id="line.56">    void sendMessage(@NotNull String message);</span>
+<span class="source-line-no">057</span><span id="line.57"></span>
+<span class="source-line-no">058</span><span id="line.58">    /**</span>
+<span class="source-line-no">059</span><span id="line.59">     * Checks if the {@link Sender} has the requested permission.</span>
+<span class="source-line-no">060</span><span id="line.60">     *</span>
+<span class="source-line-no">061</span><span id="line.61">     * @param perm a permission.</span>
+<span class="source-line-no">062</span><span id="line.62">     * @return {@code true} if the sender have permission, {@code false} otherwise</span>
+<span class="source-line-no">063</span><span id="line.63">     */</span>
+<span class="source-line-no">064</span><span id="line.64">    boolean hasPermission(@NotNull String perm);</span>
+<span class="source-line-no">065</span><span id="line.65"></span>
+<span class="source-line-no">066</span><span id="line.66">    /**</span>
+<span class="source-line-no">067</span><span id="line.67">     * Checks if the sender is online.</span>
+<span class="source-line-no">068</span><span id="line.68">     *</span>
+<span class="source-line-no">069</span><span id="line.69">     * @return {@code true} if the sender is online, {@code false} otherwise.</span>
+<span class="source-line-no">070</span><span id="line.70">     */</span>
+<span class="source-line-no">071</span><span id="line.71">    boolean isOnline();</span>
+<span class="source-line-no">072</span><span id="line.72"></span>
+<span class="source-line-no">073</span><span id="line.73">    /**</span>
+<span class="source-line-no">074</span><span id="line.74">     * Checks if the sender is console.</span>
+<span class="source-line-no">075</span><span id="line.75">     *</span>
+<span class="source-line-no">076</span><span id="line.76">     * @return {@code true} if the sender is console, {@code false} otherwise.</span>
+<span class="source-line-no">077</span><span id="line.77">     */</span>
+<span class="source-line-no">078</span><span id="line.78">    default boolean isConsole() {</span>
+<span class="source-line-no">079</span><span id="line.79">        return getUUID().equals(ConsoleSender.CONSOLE_UUID);</span>
+<span class="source-line-no">080</span><span id="line.80">    }</span>
+<span class="source-line-no">081</span><span id="line.81">}</span>
 
 
 
