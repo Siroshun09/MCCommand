@@ -22,7 +22,7 @@
 
     <groupId>com.github.siroshun09.mccommand</groupId>
     <artifactId>mccommand</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <packaging>pom</packaging>
 
     <name>MCCommand</name>
