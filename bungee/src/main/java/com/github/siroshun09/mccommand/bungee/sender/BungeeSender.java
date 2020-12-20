@@ -93,6 +93,9 @@ public class BungeeSender implements Sender {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull Locale getLocale() {
         Locale locale = null;

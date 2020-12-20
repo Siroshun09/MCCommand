@@ -93,6 +93,9 @@ public class BukkitSender implements Sender {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NotNull Locale getLocale() {
         Locale locale = null;
