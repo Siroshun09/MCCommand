@@ -104,6 +104,15 @@ public class BukkitSender implements Sender {
         return locale != null ? locale : Locale.getDefault();
     }
 
+    /**
+     * Gets {@link CommandSender}.
+     *
+     * @return the wrapped {@link CommandSender}
+     */
+    public @NotNull CommandSender getCommandSender() {
+        return sender;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(sender);
