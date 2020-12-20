@@ -102,36 +102,48 @@
 <span class="sourceLineNo">093</span><a id="line.93">        }</a>
 <span class="sourceLineNo">094</span><a id="line.94">    }</a>
 <span class="sourceLineNo">095</span><a id="line.95"></a>
-<span class="sourceLineNo">096</span><a id="line.96">    @Override</a>
-<span class="sourceLineNo">097</span><a id="line.97">    public @NotNull Locale getLocale() {</a>
-<span class="sourceLineNo">098</span><a id="line.98">        Locale locale = null;</a>
-<span class="sourceLineNo">099</span><a id="line.99"></a>
-<span class="sourceLineNo">100</span><a id="line.100">        if (sender instanceof Player) {</a>
-<span class="sourceLineNo">101</span><a id="line.101">            locale = Translation.parseLocale(((Player) sender).getLocale());</a>
-<span class="sourceLineNo">102</span><a id="line.102">        }</a>
-<span class="sourceLineNo">103</span><a id="line.103"></a>
-<span class="sourceLineNo">104</span><a id="line.104">        return locale != null ? locale : Locale.getDefault();</a>
-<span class="sourceLineNo">105</span><a id="line.105">    }</a>
+<span class="sourceLineNo">096</span><a id="line.96">    /**</a>
+<span class="sourceLineNo">097</span><a id="line.97">     * {@inheritDoc}</a>
+<span class="sourceLineNo">098</span><a id="line.98">     */</a>
+<span class="sourceLineNo">099</span><a id="line.99">    @Override</a>
+<span class="sourceLineNo">100</span><a id="line.100">    public @NotNull Locale getLocale() {</a>
+<span class="sourceLineNo">101</span><a id="line.101">        Locale locale = null;</a>
+<span class="sourceLineNo">102</span><a id="line.102"></a>
+<span class="sourceLineNo">103</span><a id="line.103">        if (sender instanceof Player) {</a>
+<span class="sourceLineNo">104</span><a id="line.104">            locale = Translation.parseLocale(((Player) sender).getLocale());</a>
+<span class="sourceLineNo">105</span><a id="line.105">        }</a>
 <span class="sourceLineNo">106</span><a id="line.106"></a>
-<span class="sourceLineNo">107</span><a id="line.107">    @Override</a>
-<span class="sourceLineNo">108</span><a id="line.108">    public int hashCode() {</a>
-<span class="sourceLineNo">109</span><a id="line.109">        return Objects.hash(sender);</a>
-<span class="sourceLineNo">110</span><a id="line.110">    }</a>
-<span class="sourceLineNo">111</span><a id="line.111"></a>
-<span class="sourceLineNo">112</span><a id="line.112">    @Override</a>
-<span class="sourceLineNo">113</span><a id="line.113">    public boolean equals(Object o) {</a>
-<span class="sourceLineNo">114</span><a id="line.114">        if (this == o) {</a>
-<span class="sourceLineNo">115</span><a id="line.115">            return true;</a>
-<span class="sourceLineNo">116</span><a id="line.116">        }</a>
-<span class="sourceLineNo">117</span><a id="line.117"></a>
-<span class="sourceLineNo">118</span><a id="line.118">        if (o instanceof BukkitSender) {</a>
-<span class="sourceLineNo">119</span><a id="line.119">            BukkitSender that = (BukkitSender) o;</a>
-<span class="sourceLineNo">120</span><a id="line.120">            return sender.equals(that.sender);</a>
-<span class="sourceLineNo">121</span><a id="line.121">        } else {</a>
-<span class="sourceLineNo">122</span><a id="line.122">            return false;</a>
-<span class="sourceLineNo">123</span><a id="line.123">        }</a>
-<span class="sourceLineNo">124</span><a id="line.124">    }</a>
-<span class="sourceLineNo">125</span><a id="line.125">}</a>
+<span class="sourceLineNo">107</span><a id="line.107">        return locale != null ? locale : Locale.getDefault();</a>
+<span class="sourceLineNo">108</span><a id="line.108">    }</a>
+<span class="sourceLineNo">109</span><a id="line.109"></a>
+<span class="sourceLineNo">110</span><a id="line.110">    /**</a>
+<span class="sourceLineNo">111</span><a id="line.111">     * Gets {@link CommandSender}.</a>
+<span class="sourceLineNo">112</span><a id="line.112">     *</a>
+<span class="sourceLineNo">113</span><a id="line.113">     * @return the wrapped {@link CommandSender}</a>
+<span class="sourceLineNo">114</span><a id="line.114">     */</a>
+<span class="sourceLineNo">115</span><a id="line.115">    public @NotNull CommandSender getCommandSender() {</a>
+<span class="sourceLineNo">116</span><a id="line.116">        return sender;</a>
+<span class="sourceLineNo">117</span><a id="line.117">    }</a>
+<span class="sourceLineNo">118</span><a id="line.118"></a>
+<span class="sourceLineNo">119</span><a id="line.119">    @Override</a>
+<span class="sourceLineNo">120</span><a id="line.120">    public int hashCode() {</a>
+<span class="sourceLineNo">121</span><a id="line.121">        return Objects.hash(sender);</a>
+<span class="sourceLineNo">122</span><a id="line.122">    }</a>
+<span class="sourceLineNo">123</span><a id="line.123"></a>
+<span class="sourceLineNo">124</span><a id="line.124">    @Override</a>
+<span class="sourceLineNo">125</span><a id="line.125">    public boolean equals(Object o) {</a>
+<span class="sourceLineNo">126</span><a id="line.126">        if (this == o) {</a>
+<span class="sourceLineNo">127</span><a id="line.127">            return true;</a>
+<span class="sourceLineNo">128</span><a id="line.128">        }</a>
+<span class="sourceLineNo">129</span><a id="line.129"></a>
+<span class="sourceLineNo">130</span><a id="line.130">        if (o instanceof BukkitSender) {</a>
+<span class="sourceLineNo">131</span><a id="line.131">            BukkitSender that = (BukkitSender) o;</a>
+<span class="sourceLineNo">132</span><a id="line.132">            return sender.equals(that.sender);</a>
+<span class="sourceLineNo">133</span><a id="line.133">        } else {</a>
+<span class="sourceLineNo">134</span><a id="line.134">            return false;</a>
+<span class="sourceLineNo">135</span><a id="line.135">        }</a>
+<span class="sourceLineNo">136</span><a id="line.136">    }</a>
+<span class="sourceLineNo">137</span><a id="line.137">}</a>
 
 
 
