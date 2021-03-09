@@ -1,5 +1,5 @@
 /*
- *     Copyright 2020 Siroshun09
+ *     Copyright 2021 Siroshun09
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package com.github.siroshun09.mccommand.common.sender;
 import com.github.siroshun09.mcmessage.MessageReceiver;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -47,15 +48,6 @@ public interface Sender extends MessageReceiver {
     String getName();
 
     /**
-     * Send a message.
-     * <p>
-     * This method does not colorize.
-     *
-     * @param message message to send.
-     */
-    void sendMessage(@NotNull String message);
-
-    /**
      * Checks if the {@link Sender} has the requested permission.
      *
      * @param perm a permission.
@@ -78,4 +70,11 @@ public interface Sender extends MessageReceiver {
     default boolean isConsole() {
         return getUUID().equals(ConsoleSender.CONSOLE_UUID);
     }
+
+    /**
+     * Gets the command sender that the instance is wrapped in.
+     *
+     * @return the original command sender
+     */
+    @NotNull Object getOriginalSender();
 }

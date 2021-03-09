@@ -1,5 +1,5 @@
 /*
- *     Copyright 2020 Siroshun09
+ *     Copyright 2021 Siroshun09
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.github.siroshun09.mccommand.bungee.sender.BungeeSender;
 import com.github.siroshun09.mccommand.common.Command;
 import com.github.siroshun09.mccommand.common.context.CommandContext;
 import com.github.siroshun09.mccommand.common.context.SimpleCommandContext;
+import net.kyori.adventure.platform.bungeecord.BungeeAudiences;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -46,7 +47,12 @@ public final class BungeeCommandFactory {
      * @param command the command to register
      */
     public static void register(@NotNull Plugin plugin, @NotNull Command command) {
-        ProxyServer.getInstance().getPluginManager().registerCommand(plugin, new BungeeCommandImpl(command));
+        ProxyServer.getInstance()
+                .getPluginManager()
+                .registerCommand(
+                        plugin,
+                        new BungeeCommandImpl(plugin, command)
+                );
     }
 
     /**
@@ -79,15 +85,22 @@ public final class BungeeCommandFactory {
      * @param executor the executor to run command
      */
     public static void registerAsync(@NotNull Plugin plugin, @NotNull Command command, @NotNull Executor executor) {
-        ProxyServer.getInstance().getPluginManager().registerCommand(plugin, new AsyncBungeeCommandImpl(command, executor));
+        ProxyServer.getInstance()
+                .getPluginManager()
+                .registerCommand(
+                        plugin,
+                        new AsyncBungeeCommandImpl(plugin, command, executor)
+                );
     }
 
     private static class BungeeCommandImpl extends net.md_5.bungee.api.plugin.Command implements TabExecutor {
 
+        private final BungeeAudiences audiences;
         private final Command command;
 
-        private BungeeCommandImpl(@NotNull Command command) {
+        private BungeeCommandImpl(@NotNull Plugin plugin, @NotNull Command command) {
             super(command.getName(), null, command.getAliases().toArray(new String[0]));
+            this.audiences = BungeeAudiences.create(plugin);
             this.command = command;
         }
 
@@ -108,7 +121,7 @@ public final class BungeeCommandFactory {
         private CommandContext createContext(CommandSender sender, String[] args) {
             return SimpleCommandContext.newBuilder()
                     .setCommand(command)
-                    .setSender(new BungeeSender(sender))
+                    .setSender(new BungeeSender(audiences, sender))
                     .setArguments(args)
                     .setLabel(command.getName())
                     .build();
@@ -117,11 +130,13 @@ public final class BungeeCommandFactory {
 
     private static class AsyncBungeeCommandImpl extends net.md_5.bungee.api.plugin.Command implements TabExecutor {
 
+        private final BungeeAudiences audiences;
         private final Command command;
         private final Executor executor;
 
-        private AsyncBungeeCommandImpl(@NotNull Command command, @NotNull Executor executor) {
+        private AsyncBungeeCommandImpl(@NotNull Plugin plugin, @NotNull Command command, @NotNull Executor executor) {
             super(command.getName(), null, command.getAliases().toArray(new String[0]));
+            this.audiences = BungeeAudiences.create(plugin);
             this.command = command;
             this.executor = executor;
         }
@@ -145,7 +160,7 @@ public final class BungeeCommandFactory {
         private CommandContext createContext(CommandSender sender, String[] args) {
             return SimpleCommandContext.newBuilder()
                     .setCommand(command)
-                    .setSender(new BungeeSender(sender))
+                    .setSender(new BungeeSender(audiences, sender))
                     .setArguments(args)
                     .setLabel(command.getName())
                     .build();

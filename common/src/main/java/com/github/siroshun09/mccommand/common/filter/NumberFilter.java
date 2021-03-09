@@ -16,31 +16,36 @@
 
 package com.github.siroshun09.mccommand.common.filter;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
- * An abstract class of {@link Filter}.
+ * A class that implements {@link Filter} for the {@link Number}.
  *
- * @param <T> the value type
+ * @param <N> the {@link Number} type
  */
-public abstract class AbstractFilter<T> implements Filter<T> {
-
-    private final Predicate<T> predicate;
+public final class NumberFilter<N extends Number> extends AbstractFilter<N> {
 
     /**
-     * The constructor of {@link AbstractFilter}
+     * The constructor of {@link NumberFilter}
      *
      * @param predicate the {@link Predicate} to test the value
      */
-    protected AbstractFilter(@NotNull Predicate<T> predicate) {
-        this.predicate = Objects.requireNonNull(predicate);
+    private NumberFilter(@NotNull Predicate<N> predicate) {
+        super(predicate);
     }
 
-    @Override
-    public boolean test(T t) {
-        return predicate.test(t);
+    /**
+     * Creates the {@link NumberFilter}.
+     *
+     * @param predicate the predicate to test the {@link Number}
+     * @param <N>       the {@link Number} type
+     * @return the {@link NumberFilter}
+     */
+    @Contract("_ -> new")
+    public static <N extends Number> @NotNull NumberFilter<N> create(@NotNull Predicate<N> predicate) {
+        return new NumberFilter<N>(predicate);
     }
 }

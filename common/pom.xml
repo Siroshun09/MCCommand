@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~     Copyright 2020 Siroshun09
+  ~     Copyright 2021 Siroshun09
   ~
   ~     Licensed under the Apache License, Version 2.0 (the "License");
   ~     you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
     <parent>
         <artifactId>mccommand</artifactId>
         <groupId>com.github.siroshun09.mccommand</groupId>
-        <version>1.9.0</version>
+        <version>2.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

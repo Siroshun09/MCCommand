@@ -1,7 +1,8 @@
-[![Latest Version](https://img.shields.io/bintray/v/siroshun09/maven/MCCommand?label=Latest)](https://bintray.com/siroshun09/maven/MCCommand/_latestVersion)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Siroshun09/MCCommand/Java%20CI?label=Build)
-![GitHub](https://img.shields.io/github/license/Siroshun09/MCCommand?label=License)
-[![Bintray](https://img.shields.io/bintray/v/siroshun09/maven/MCCommand?color=orange&label=Javadoc)](https://siroshun09.github.io/MCCommand/)
+![Maven Central](https://img.shields.io/maven-central/v/com.github.siroshun09.mccommand/mccommand)
+![Maven Central](https://img.shields.io/nexus/s/com.github.siroshun09.mccommand/mccommand?label=snapshot&server=https%3A%2F%2Foss.sonatype.org)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Siroshun09/MCCommand/Java%20CI)
+![GitHub](https://img.shields.io/github/license/Siroshun09/MCCommand)
+[![Javadoc](https://img.shields.io/badge/javadoc-page-orange)](https://siroshun09.github.io/MCCommand/)
 
 # MCCommand
 
@@ -12,17 +13,10 @@ A library to help implement Bukkit and BungeeCord commands.
 #### For Maven:
 
 ```xml
-    <repository>
-        <id>jcenter</id>
-        <url>https://jcenter.bintray.com</url>
-    </repository>
-```
-
-```xml
     <dependency>
         <groupId>com.github.siroshun09.mccommand</groupId>
         <artifactId>bukkit</artifactId>
-        <version>1.9.0</version>
+        <version>2.0.0</version>
     </dependency>
 ```
 
@@ -30,7 +24,7 @@ A library to help implement Bukkit and BungeeCord commands.
     <dependency>
         <groupId>com.github.siroshun09.mccommand</groupId>
         <artifactId>bungee</artifactId>
-        <version>1.9.0</version>
+        <version>2.0.0</version>
     </dependency>
 ```
 
@@ -44,13 +38,13 @@ A library to help implement Bukkit and BungeeCord commands.
 
 ```
     dependencies {
-        compile 'com.github.siroshun09.mccommand:bukkit:1.7.0'
+        compile 'com.github.siroshun09.mccommand:bukkit:2.0.0'
     }
 ```
 
 ```
     dependencies {
-        compile 'com.github.siroshun09.mccommand:bungee:1.7.0'
+        compile 'com.github.siroshun09.mccommand:bungee:2.0.0'
     }
 ```
 
@@ -62,4 +56,4 @@ Javadoc: https://siroshun09.github.io/MCCommand/
 
 This project is under the Apache License 2.0 license. Please see [LICENSE](LICENSE) for more info.
 
-Copyright © 2020, Siroshun09
+Copyright © 2020-2021, Siroshun09

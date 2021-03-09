@@ -1,5 +1,5 @@
 /*
- *     Copyright 2020 Siroshun09
+ *     Copyright 2021 Siroshun09
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.github.siroshun09.mccommand.bukkit.sender.BukkitSender;
 import com.github.siroshun09.mccommand.common.Command;
 import com.github.siroshun09.mccommand.common.argument.Argument;
 import com.github.siroshun09.mccommand.common.context.SimpleCommandContext;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -36,9 +37,11 @@ import java.util.Objects;
  */
 public class AsyncTabCompleteListener implements Listener {
 
+    private final BukkitAudiences audiences;
     private final Command command;
 
-    private AsyncTabCompleteListener(@NotNull Command command) {
+    private AsyncTabCompleteListener(@NotNull Plugin plugin, @NotNull Command command) {
+        this.audiences = BukkitAudiences.create(plugin);
         this.command = command;
     }
 
@@ -51,7 +54,7 @@ public class AsyncTabCompleteListener implements Listener {
      */
     @NotNull
     public static AsyncTabCompleteListener register(@NotNull Plugin plugin, @NotNull Command command) {
-        AsyncTabCompleteListener listener = new AsyncTabCompleteListener(command);
+        AsyncTabCompleteListener listener = new AsyncTabCompleteListener(plugin, command);
 
         plugin.getServer().getPluginManager().registerEvents(listener, plugin);
 
@@ -116,7 +119,7 @@ public class AsyncTabCompleteListener implements Listener {
         event.setCompletions(command.onTabCompletion(
                 SimpleCommandContext.newBuilder()
                         .setCommand(command)
-                        .setSender(new BukkitSender(event.getSender()))
+                        .setSender(new BukkitSender(audiences, event.getSender()))
                         .setArguments(arguments)
                         .setLabel(alias)
                         .build()

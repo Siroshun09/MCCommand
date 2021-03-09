@@ -1,5 +1,5 @@
 /*
- *     Copyright 2020 Siroshun09
+ *     Copyright 2021 Siroshun09
  *
  *     Licensed under the Apache License, Version 2.0 (the "License");
  *     you may not use this file except in compliance with the License.
@@ -16,9 +16,12 @@
 
 package com.github.siroshun09.mccommand.bungee.sender;
 
-import com.github.siroshun09.mccommand.common.sender.Sender;
 import com.github.siroshun09.mccommand.common.sender.ConsoleSender;
+import com.github.siroshun09.mccommand.common.sender.Sender;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.platform.bungeecord.BungeeAudiences;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -32,6 +35,7 @@ import java.util.UUID;
  */
 public class BungeeSender implements Sender {
 
+    private final Audience audience;
     private final CommandSender sender;
 
     /**
@@ -39,8 +43,15 @@ public class BungeeSender implements Sender {
      *
      * @param sender {@link CommandSender} to wrap
      */
-    public BungeeSender(@NotNull CommandSender sender) {
+    public BungeeSender(@NotNull BungeeAudiences audiences, @NotNull CommandSender sender) {
+        this.audience = audiences.sender(sender);
         this.sender = sender;
+    }
+
+    @NotNull
+    @Override
+    public Audience getAudience() {
+        return audience;
     }
 
     /**
@@ -69,14 +80,6 @@ public class BungeeSender implements Sender {
      * {@inheritDoc}
      */
     @Override
-    public void sendMessage(@NotNull String message) {
-        sender.sendMessage(TextComponent.fromLegacyText(message));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public boolean hasPermission(@NotNull String perm) {
         return sender.hasPermission(perm);
     }
@@ -97,6 +100,14 @@ public class BungeeSender implements Sender {
      * {@inheritDoc}
      */
     @Override
+    public boolean isConsole() {
+        return sender.equals(ProxyServer.getInstance().getConsole());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public @NotNull Locale getLocale() {
         Locale locale = null;
 
@@ -105,6 +116,14 @@ public class BungeeSender implements Sender {
         }
 
         return locale != null ? locale : Locale.getDefault();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public @NotNull Object getOriginalSender() {
+        return sender;
     }
 
     /**
