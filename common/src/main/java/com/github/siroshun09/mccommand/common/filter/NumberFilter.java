@@ -26,7 +26,7 @@ import java.util.function.Predicate;
  *
  * @param <N> the {@link Number} type
  */
-public class NumberFilter<N extends Number> extends AbstractFilter<N> {
+public final class NumberFilter<N extends Number> extends AbstractFilter<N> {
 
     /**
      * The constructor of {@link NumberFilter}
