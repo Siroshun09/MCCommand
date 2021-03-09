@@ -85,7 +85,7 @@
             <version>2.0.0</version>
             <scope>compile</scope>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.7.0</version>
@@ -96,7 +96,7 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.7.0</version>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
     <profiles>
