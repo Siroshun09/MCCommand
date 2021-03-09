@@ -26,7 +26,7 @@ import java.util.function.Predicate;
  *
  * @param <T> the value type
  */
-public class AbstractFilter<T> implements Filter<T> {
+public abstract class AbstractFilter<T> implements Filter<T> {
 
     private final Predicate<T> predicate;
 
