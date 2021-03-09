@@ -18,7 +18,7 @@ package com.github.siroshun09.mccommand.bukkit.sender;
 
 import com.github.siroshun09.mccommand.common.sender.ConsoleSender;
 import com.github.siroshun09.mccommand.common.sender.Sender;
-import com.github.siroshun09.mcmessage.translation.Translation;
+import com.github.siroshun09.mcmessage.util.LocaleParser;
 import net.kyori.adventure.audience.Audience;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -103,7 +103,7 @@ public class BukkitSender implements Sender {
         Locale locale = null;
 
         if (sender instanceof Player) {
-            locale = Translation.parseLocale(((Player) sender).getLocale());
+            locale = LocaleParser.parse(((Player) sender).getLocale());
         }
 
         return locale != null ? locale : Locale.getDefault();
