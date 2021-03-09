@@ -19,6 +19,7 @@ package com.github.siroshun09.mccommand.common.sender;
 import com.github.siroshun09.mcmessage.MessageReceiver;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -69,4 +70,11 @@ public interface Sender extends MessageReceiver {
     default boolean isConsole() {
         return getUUID().equals(ConsoleSender.CONSOLE_UUID);
     }
+
+    /**
+     * Gets the command sender that the instance is wrapped in.
+     *
+     * @return the original command sender
+     */
+    @NotNull Object getOriginalSender();
 }
