@@ -19,6 +19,7 @@ package com.github.siroshun09.mccommand.bukkit.sender;
 import com.github.siroshun09.mccommand.common.sender.ConsoleSender;
 import com.github.siroshun09.mccommand.common.sender.Sender;
 import com.github.siroshun09.mcmessage.translation.Translation;
+import net.kyori.adventure.audience.Audience;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -32,15 +33,24 @@ import java.util.UUID;
  */
 public class BukkitSender implements Sender {
 
+    private final Audience audience;
     private final CommandSender sender;
 
     /**
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
      *
+     * @param audience
      * @param sender {@link CommandSender} to wrap
      */
-    public BukkitSender(@NotNull CommandSender sender) {
+    public BukkitSender(@NotNull Audience audience, @NotNull CommandSender sender) {
+        this.audience = audience;
         this.sender = sender;
+    }
+
+    @NotNull
+    @Override
+    public Audience getAudience() {
+        return audience;
     }
 
     /**
