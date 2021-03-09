@@ -39,7 +39,7 @@ public class BukkitSender implements Sender {
     /**
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
      *
-     * @param audience
+     * @param audience the audience
      * @param sender   {@link CommandSender} to wrap
      */
     public BukkitSender(@NotNull Audience audience, @NotNull CommandSender sender) {
