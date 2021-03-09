@@ -18,7 +18,10 @@ package com.github.siroshun09.mccommand.bungee.sender;
 
 import com.github.siroshun09.mccommand.common.sender.ConsoleSender;
 import com.github.siroshun09.mccommand.common.sender.Sender;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.platform.bungeecord.BungeeAudiences;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -33,14 +36,22 @@ import java.util.UUID;
 public class BungeeSender implements Sender {
 
     private final CommandSender sender;
+    private final Audience audience;
 
     /**
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
      *
      * @param sender {@link CommandSender} to wrap
      */
-    public BungeeSender(@NotNull CommandSender sender) {
+    public BungeeSender(@NotNull BungeeAudiences audiences, @NotNull CommandSender sender) {
         this.sender = sender;
+        this.audience = audiences.sender(sender);
+    }
+
+    @NotNull
+    @Override
+    public Audience getAudience() {
+        return audience;
     }
 
     /**
@@ -91,6 +102,14 @@ public class BungeeSender implements Sender {
         } else {
             return true;
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isConsole() {
+        return sender.equals(ProxyServer.getInstance().getConsole());
     }
 
     /**
