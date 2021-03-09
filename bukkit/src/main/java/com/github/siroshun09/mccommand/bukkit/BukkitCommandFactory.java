@@ -20,6 +20,7 @@ import com.github.siroshun09.mccommand.bukkit.sender.BukkitSender;
 import com.github.siroshun09.mccommand.common.Command;
 import com.github.siroshun09.mccommand.common.context.CommandContext;
 import com.github.siroshun09.mccommand.common.context.SimpleCommandContext;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
@@ -48,7 +49,7 @@ public final class BukkitCommandFactory {
      * @param command the command to register
      */
     public static void register(@NotNull PluginCommand target, @NotNull Command command) {
-        BukkitCommandImpl bukkitCommand = new BukkitCommandImpl(command);
+        BukkitCommandImpl bukkitCommand = new BukkitCommandImpl(target.getPlugin(), command);
 
         target.setExecutor(bukkitCommand);
         target.setTabCompleter(bukkitCommand);
@@ -88,7 +89,7 @@ public final class BukkitCommandFactory {
      * @param executor the executor to run command
      */
     public static void registerAsync(@NotNull PluginCommand target, @NotNull Command command, @NotNull Executor executor) {
-        AsyncBukkitCommandImpl bukkitCommand = new AsyncBukkitCommandImpl(command, executor);
+        AsyncBukkitCommandImpl bukkitCommand = new AsyncBukkitCommandImpl(target.getPlugin(), command, executor);
 
         target.setExecutor(bukkitCommand);
         target.setTabCompleter(bukkitCommand);
@@ -96,9 +97,11 @@ public final class BukkitCommandFactory {
 
     private static class BukkitCommandImpl implements CommandExecutor, TabCompleter {
 
+        private final BukkitAudiences audiences;
         private final Command command;
 
-        private BukkitCommandImpl(@NotNull Command command) {
+        private BukkitCommandImpl(@NotNull Plugin plugin, @NotNull Command command) {
+            this.audiences = BukkitAudiences.create(plugin);
             this.command = command;
         }
 
@@ -123,7 +126,7 @@ public final class BukkitCommandFactory {
         private CommandContext createContext(@NotNull CommandSender sender, @NotNull String label, @NotNull String[] args) {
             return SimpleCommandContext.newBuilder()
                     .setCommand(command)
-                    .setSender(new BukkitSender(sender))
+                    .setSender(new BukkitSender(audiences, sender))
                     .setArguments(args)
                     .setLabel(label)
                     .build();
@@ -132,10 +135,12 @@ public final class BukkitCommandFactory {
 
     private static class AsyncBukkitCommandImpl implements CommandExecutor, TabCompleter {
 
+        private final BukkitAudiences audiences;
         private final Command command;
         private final Executor executor;
 
-        private AsyncBukkitCommandImpl(@NotNull Command command, @NotNull Executor executor) {
+        private AsyncBukkitCommandImpl(@NotNull Plugin plugin, @NotNull Command command, @NotNull Executor executor) {
+            this.audiences = BukkitAudiences.create(plugin);
             this.command = command;
             this.executor = executor;
         }
@@ -162,7 +167,7 @@ public final class BukkitCommandFactory {
         private CommandContext createContext(@NotNull CommandSender sender, @NotNull String label, @NotNull String[] args) {
             return SimpleCommandContext.newBuilder()
                     .setCommand(command)
-                    .setSender(new BukkitSender(sender))
+                    .setSender(new BukkitSender(audiences, sender))
                     .setArguments(args)
                     .setLabel(label)
                     .build();
