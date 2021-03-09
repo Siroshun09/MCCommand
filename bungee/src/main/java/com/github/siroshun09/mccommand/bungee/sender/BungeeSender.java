@@ -35,8 +35,8 @@ import java.util.UUID;
  */
 public class BungeeSender implements Sender {
 
-    private final CommandSender sender;
     private final Audience audience;
+    private final CommandSender sender;
 
     /**
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
@@ -44,8 +44,8 @@ public class BungeeSender implements Sender {
      * @param sender {@link CommandSender} to wrap
      */
     public BungeeSender(@NotNull BungeeAudiences audiences, @NotNull CommandSender sender) {
-        this.sender = sender;
         this.audience = audiences.sender(sender);
+        this.sender = sender;
     }
 
     @NotNull
