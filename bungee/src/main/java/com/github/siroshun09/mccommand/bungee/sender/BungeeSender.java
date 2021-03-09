@@ -16,8 +16,8 @@
 
 package com.github.siroshun09.mccommand.bungee.sender;
 
-import com.github.siroshun09.mccommand.common.sender.Sender;
 import com.github.siroshun09.mccommand.common.sender.ConsoleSender;
+import com.github.siroshun09.mccommand.common.sender.Sender;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -105,6 +105,14 @@ public class BungeeSender implements Sender {
         }
 
         return locale != null ? locale : Locale.getDefault();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public @NotNull Object getOriginalSender() {
+        return sender;
     }
 
     /**

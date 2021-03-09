@@ -108,6 +108,14 @@ public class BukkitSender implements Sender {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public @NotNull Object getOriginalSender() {
+        return sender;
+    }
+
+    /**
      * Gets {@link CommandSender}.
      *
      * @return the wrapped {@link CommandSender}
