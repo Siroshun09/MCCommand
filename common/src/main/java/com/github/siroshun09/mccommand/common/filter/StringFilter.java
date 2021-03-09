@@ -61,6 +61,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @param prefix the prefix
      * @return the {@link StringFilter}
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter startsWith(@NotNull String prefix) {
         Objects.requireNonNull(prefix);
         return create(str -> str != null && str.startsWith(prefix));
@@ -74,6 +75,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @param prefix the prefix
      * @return the {@link StringFilter}
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter startsWithIgnoreCase(@NotNull String prefix) {
         Objects.requireNonNull(prefix);
         var lowerCase = prefix.toLowerCase(Locale.ROOT);
@@ -86,6 +88,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @param suffix the suffix
      * @return the {@link StringFilter}
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter endsWith(@NotNull String suffix) {
         Objects.requireNonNull(suffix);
         return create(str -> str != null && str.endsWith(suffix));
@@ -99,6 +102,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @param suffix the suffix
      * @return the {@link StringFilter}
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter endsWithIgnoreCase(@NotNull String suffix) {
         Objects.requireNonNull(suffix);
         var lowerCase = suffix.toLowerCase(Locale.ROOT);
@@ -113,6 +117,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @return the {@link StringFilter}
      * @throws IllegalArgumentException if the minimum or maximum value is less than zero or if the minimum value is greater than the maximum value
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter lengthRange(@Range(from = 0, to = Integer.MAX_VALUE) int min,
                                                     @Range(from = 0, to = Integer.MAX_VALUE) int max) throws IllegalArgumentException {
         if (min < 0 || max < 0) {
@@ -133,6 +138,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @return the {@link StringFilter}
      * @throws IllegalArgumentException if the maximum value is less than zero
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter maxLength(@Range(from = 0, to = Integer.MAX_VALUE) int max) {
         if (max < 0) {
             throw new IllegalArgumentException("max must be positive integer.");
@@ -148,6 +154,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @return the {@link StringFilter}
      * @throws IllegalArgumentException if the minimum value is less than zero
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter minLength(@Range(from = 0, to = Integer.MAX_VALUE) int min) {
         if (min < 0) {
             throw new IllegalArgumentException("min must be positive integer.");
@@ -162,6 +169,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @param regex the regex
      * @return the {@link StringFilter}
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter regex(@NotNull String regex) {
         return regex(Pattern.compile(regex));
     }
@@ -172,6 +180,7 @@ public final class StringFilter extends AbstractFilter<String> {
      * @param pattern the pattern
      * @return the {@link StringFilter}
      */
+    @Contract(value = "_ -> new", pure = true)
     public static @NotNull StringFilter regex(@NotNull Pattern pattern) {
         var predicate = pattern.asMatchPredicate();
         return create(str -> str != null && predicate.test(str));
