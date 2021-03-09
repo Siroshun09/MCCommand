@@ -59,14 +59,6 @@
         <url>https://github.com/Siroshun09/MCCommand/runs</url>
     </ciManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>bintray-siroshun09-maven</id>
-            <name>siroshun09-maven</name>
-            <url>https://api.bintray.com/maven/siroshun09/maven/MCCommand/;publish=1</url>
-        </repository>
-    </distributionManagement>
-
     <properties>
         <project.charset>UTF-8</project.charset>
         <java.version>11</java.version>
@@ -79,13 +71,6 @@
         <module>bukkit</module>
         <module>bungee</module>
     </modules>
-
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
