@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Range;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 /**
  * A class that implements {@link Filter} for the {@link String}.
@@ -153,5 +154,26 @@ public final class StringFilter extends AbstractFilter<String> {
         }
 
         return create(str -> str != null && min <= str.length());
+    }
+
+    /**
+     * Create a filter using a regular expression.
+     *
+     * @param regex the regex
+     * @return the {@link StringFilter}
+     */
+    public static @NotNull StringFilter regex(@NotNull String regex) {
+        return regex(Pattern.compile(regex));
+    }
+
+    /**
+     * Create a filter using a {@link Pattern}.
+     *
+     * @param pattern the pattern
+     * @return the {@link StringFilter}
+     */
+    public static @NotNull StringFilter regex(@NotNull Pattern pattern) {
+        var predicate = pattern.asMatchPredicate();
+        return create(str -> str != null && predicate.test(str));
     }
 }
