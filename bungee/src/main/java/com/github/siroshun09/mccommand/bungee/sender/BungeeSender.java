@@ -80,14 +80,6 @@ public class BungeeSender implements Sender {
      * {@inheritDoc}
      */
     @Override
-    public void sendMessage(@NotNull String message) {
-        sender.sendMessage(TextComponent.fromLegacyText(message));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public boolean hasPermission(@NotNull String perm) {
         return sender.hasPermission(perm);
     }

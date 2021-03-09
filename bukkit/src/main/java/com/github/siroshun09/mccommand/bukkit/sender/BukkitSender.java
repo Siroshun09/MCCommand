@@ -40,7 +40,7 @@ public class BukkitSender implements Sender {
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
      *
      * @param audience
-     * @param sender {@link CommandSender} to wrap
+     * @param sender   {@link CommandSender} to wrap
      */
     public BukkitSender(@NotNull Audience audience, @NotNull CommandSender sender) {
         this.audience = audience;
@@ -73,14 +73,6 @@ public class BukkitSender implements Sender {
     @NotNull
     public String getName() {
         return sender.getName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void sendMessage(@NotNull String message) {
-        sender.sendMessage(message);
     }
 
     /**
