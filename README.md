@@ -31,12 +31,6 @@ A library to help implement Bukkit and BungeeCord commands.
 #### For Gradle:
 
 ```
-    repositories {
-        jcenter()
-    }
-```
-
-```
     dependencies {
         compile 'com.github.siroshun09.mccommand:bukkit:2.0.0'
     }
