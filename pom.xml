@@ -70,6 +70,7 @@
         <module>common</module>
         <module>bukkit</module>
         <module>bungee</module>
+        <module>paper</module>
     </modules>
 
     <dependencies>
