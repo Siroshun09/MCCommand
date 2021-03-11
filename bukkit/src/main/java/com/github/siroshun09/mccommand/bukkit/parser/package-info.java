@@ -15,6 +15,6 @@
  */
 
 /**
- * The package of classes that implement the {@link com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser} that can be used on BungeeCord.
+ * The package of classes that implement the {@link com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser} that can be used on Bukkit.
  */
-package com.github.siroshun09.mccommand.bungee.argument.parser;
+package com.github.siroshun09.mccommand.bukkit.parser;

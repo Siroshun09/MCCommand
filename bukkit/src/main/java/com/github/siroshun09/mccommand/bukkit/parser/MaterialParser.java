@@ -14,7 +14,7 @@
  *     limitations under the License.
  */
 
-package com.github.siroshun09.mccommand.bukkit.argument.parser;
+package com.github.siroshun09.mccommand.bukkit.parser;
 
 import com.github.siroshun09.mccommand.common.argument.Argument;
 import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;

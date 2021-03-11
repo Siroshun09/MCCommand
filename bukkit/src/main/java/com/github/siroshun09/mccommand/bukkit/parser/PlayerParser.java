@@ -14,26 +14,26 @@
  *     limitations under the License.
  */
 
-package com.github.siroshun09.mccommand.bukkit.argument.parser;
+package com.github.siroshun09.mccommand.bukkit.parser;
 
 import com.github.siroshun09.mccommand.common.argument.Argument;
 import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * A class that parses an {@link Argument} to an {@link OfflinePlayer}.
+ * A class that parses an {@link Argument} to an {@link Player}.
  */
-public class OfflinePlayerParser implements ArgumentParser<OfflinePlayer> {
+public class PlayerParser implements ArgumentParser<Player> {
 
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("deprecation")
     @Override
-    public @Nullable OfflinePlayer parse(@NotNull Argument argument) {
-        return Bukkit.getOfflinePlayer(argument.get());
+    public @Nullable Player parse(@NotNull Argument argument) {
+        return Bukkit.getPlayer(argument.get());
     }
+
 }

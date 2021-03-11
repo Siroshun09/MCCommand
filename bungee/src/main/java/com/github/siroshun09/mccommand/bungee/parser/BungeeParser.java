@@ -14,26 +14,22 @@
  *     limitations under the License.
  */
 
-package com.github.siroshun09.mccommand.bukkit.argument.parser;
+package com.github.siroshun09.mccommand.bungee.parser;
 
-import com.github.siroshun09.mccommand.common.argument.Argument;
 import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 /**
- * A class that parses an {@link Argument} to an {@link Player}.
+ * Parsers for BungeeCord.
  */
-public class PlayerParser implements ArgumentParser<Player> {
+public final class BungeeParser {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public @Nullable Player parse(@NotNull Argument argument) {
-        return Bukkit.getPlayer(argument.get());
+    private BungeeParser() {
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * An instance of {@link ArgumentParser} that parses an {@link com.github.siroshun09.mccommand.common.argument.Argument} to {@link ProxiedPlayer}
+     */
+    public static final ArgumentParser<ProxiedPlayer> PROXIED_PLAYER = new ProxiedPlayerParser();
 }

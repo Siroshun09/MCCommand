@@ -14,40 +14,26 @@
  *     limitations under the License.
  */
 
-package com.github.siroshun09.mccommand.bukkit.argument.parser;
+package com.github.siroshun09.mccommand.bukkit.parser;
 
 import com.github.siroshun09.mccommand.common.argument.Argument;
 import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;
-import org.bukkit.Sound;
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * A class that parses an {@link Argument} to an {@link Sound}.
+ * A class that parses an {@link Argument} to an {@link OfflinePlayer}.
  */
-public class SoundParser implements ArgumentParser<Sound> {
+public class OfflinePlayerParser implements ArgumentParser<OfflinePlayer> {
 
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("deprecation")
     @Override
-    public @Nullable Sound parse(@NotNull Argument argument) {
-        try {
-            return Sound.valueOf(argument.get().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public @NotNull Sound parseOrThrow(@NotNull Argument argument) throws IllegalArgumentException {
-        try {
-            return Sound.valueOf(argument.get().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw generateException(argument, e);
-        }
+    public @Nullable OfflinePlayer parse(@NotNull Argument argument) {
+        return Bukkit.getOfflinePlayer(argument.get());
     }
 }

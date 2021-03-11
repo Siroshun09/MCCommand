@@ -14,22 +14,7 @@
  *     limitations under the License.
  */
 
-package com.github.siroshun09.mccommand.bungee.argument.parser;
-
-import com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
-
 /**
- * Parsers for BungeeCord.
+ * The package of classes that implement the {@link com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser} that can be used on BungeeCord.
  */
-public final class BungeeParser {
-
-    private BungeeParser() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * An instance of {@link ArgumentParser} that parses an {@link com.github.siroshun09.mccommand.common.argument.Argument} to {@link ProxiedPlayer}
-     */
-    public static final ArgumentParser<ProxiedPlayer> PROXIED_PLAYER = new ProxiedPlayerParser();
-}
+package com.github.siroshun09.mccommand.bungee.parser;
