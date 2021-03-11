@@ -1,0 +1,16 @@
+com.github.siroshun09.mccommand.bukkit
+com.github.siroshun09.mccommand.bukkit.parser
+com.github.siroshun09.mccommand.bukkit.sender
+com.github.siroshun09.mccommand.bungee
+com.github.siroshun09.mccommand.bungee.parser
+com.github.siroshun09.mccommand.bungee.sender
+com.github.siroshun09.mccommand.common
+com.github.siroshun09.mccommand.common.argument
+com.github.siroshun09.mccommand.common.argument.parser
+com.github.siroshun09.mccommand.common.context
+com.github.siroshun09.mccommand.common.filter
+com.github.siroshun09.mccommand.common.sender
+com.github.siroshun09.mccommand.paper
+com.github.siroshun09.mccommand.paper.listener
+com.github.siroshun09.mccommand.paper.parser
+com.github.siroshun09.mccommand.paper.sender
