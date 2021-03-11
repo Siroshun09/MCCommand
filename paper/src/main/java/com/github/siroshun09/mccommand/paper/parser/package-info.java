@@ -15,6 +15,6 @@
  */
 
 /**
- * The package of classes that implement asynchronous tab completion that can be used on Paper.
+ * The package of classes that implement the {@link com.github.siroshun09.mccommand.common.argument.parser.ArgumentParser} that can be used on Bukkit.
  */
-package com.github.siroshun09.mccommand.bukkit.paper;
+package com.github.siroshun09.mccommand.paper.parser;

@@ -14,13 +14,12 @@
  *     limitations under the License.
  */
 
-package com.github.siroshun09.mccommand.bukkit;
+package com.github.siroshun09.mccommand.paper;
 
-import com.github.siroshun09.mccommand.bukkit.sender.BukkitSender;
 import com.github.siroshun09.mccommand.common.Command;
 import com.github.siroshun09.mccommand.common.context.CommandContext;
 import com.github.siroshun09.mccommand.common.context.SimpleCommandContext;
-import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import com.github.siroshun09.mccommand.paper.sender.PaperSender;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
@@ -33,12 +32,9 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-/**
- * The class for registering commands to Bukkit.
- */
-public final class BukkitCommandFactory {
+public final class PaperCommandFactory {
 
-    private BukkitCommandFactory() {
+    private PaperCommandFactory() {
         throw new UnsupportedOperationException();
     }
 
@@ -49,10 +45,10 @@ public final class BukkitCommandFactory {
      * @param command the command to register
      */
     public static void register(@NotNull PluginCommand target, @NotNull Command command) {
-        BukkitCommandImpl bukkitCommand = new BukkitCommandImpl(target.getPlugin(), command);
+        PaperCommandImpl paperCommand = new PaperCommandImpl(command);
 
-        target.setExecutor(bukkitCommand);
-        target.setTabCompleter(bukkitCommand);
+        target.setExecutor(paperCommand);
+        target.setTabCompleter(paperCommand);
     }
 
     /**
@@ -63,6 +59,9 @@ public final class BukkitCommandFactory {
      * Note:
      * <p>
      * The tab completion will execute on main thread.
+     * <p>
+     * If you want the tab completion to be executed asynchronously, use
+     * {@link com.github.siroshun09.mccommand.paper.listener.AsyncTabCompleteListener#register(Plugin, Command)}.
      *
      * @param target  the {@link PluginCommand}
      * @param command the command to register
@@ -79,25 +78,25 @@ public final class BukkitCommandFactory {
      * Note:
      * <p>
      * The tab completion will execute on main thread.
+     * <p>
+     * If you want the tab completion to be executed asynchronously, use {@link com.github.siroshun09.mccommand.paper.listener.AsyncTabCompleteListener#register(Plugin, Command)}.
      *
      * @param target   the {@link PluginCommand}
      * @param command  the command to register
      * @param executor the executor to run command
      */
     public static void registerAsync(@NotNull PluginCommand target, @NotNull Command command, @NotNull Executor executor) {
-        AsyncBukkitCommandImpl bukkitCommand = new AsyncBukkitCommandImpl(target.getPlugin(), command, executor);
+        AsyncPaperCommandImpl paperCommand = new AsyncPaperCommandImpl(command, executor);
 
-        target.setExecutor(bukkitCommand);
-        target.setTabCompleter(bukkitCommand);
+        target.setExecutor(paperCommand);
+        target.setTabCompleter(paperCommand);
     }
 
-    private static class BukkitCommandImpl implements CommandExecutor, TabCompleter {
+    private static class PaperCommandImpl implements CommandExecutor, TabCompleter {
 
-        private final BukkitAudiences audiences;
         private final Command command;
 
-        private BukkitCommandImpl(@NotNull Plugin plugin, @NotNull Command command) {
-            this.audiences = BukkitAudiences.create(plugin);
+        private PaperCommandImpl(@NotNull Command command) {
             this.command = command;
         }
 
@@ -122,21 +121,19 @@ public final class BukkitCommandFactory {
         private CommandContext createContext(@NotNull CommandSender sender, @NotNull String label, @NotNull String[] args) {
             return SimpleCommandContext.newBuilder()
                     .setCommand(command)
-                    .setSender(new BukkitSender(audiences, sender))
+                    .setSender(new PaperSender(sender))
                     .setArguments(args)
                     .setLabel(label)
                     .build();
         }
     }
 
-    private static class AsyncBukkitCommandImpl implements CommandExecutor, TabCompleter {
+    private static class AsyncPaperCommandImpl implements CommandExecutor, TabCompleter {
 
-        private final BukkitAudiences audiences;
         private final Command command;
         private final Executor executor;
 
-        private AsyncBukkitCommandImpl(@NotNull Plugin plugin, @NotNull Command command, @NotNull Executor executor) {
-            this.audiences = BukkitAudiences.create(plugin);
+        private AsyncPaperCommandImpl(@NotNull Command command, @NotNull Executor executor) {
             this.command = command;
             this.executor = executor;
         }
@@ -163,7 +160,7 @@ public final class BukkitCommandFactory {
         private CommandContext createContext(@NotNull CommandSender sender, @NotNull String label, @NotNull String[] args) {
             return SimpleCommandContext.newBuilder()
                     .setCommand(command)
-                    .setSender(new BukkitSender(audiences, sender))
+                    .setSender(new PaperSender(sender))
                     .setArguments(args)
                     .setLabel(label)
                     .build();
