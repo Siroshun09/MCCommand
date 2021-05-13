@@ -19,7 +19,6 @@ package com.github.siroshun09.mccommand.common.sender;
 import com.github.siroshun09.mcmessage.MessageReceiver;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.UUID;
 
 /**
