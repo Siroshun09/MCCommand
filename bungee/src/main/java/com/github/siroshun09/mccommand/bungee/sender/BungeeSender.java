@@ -41,7 +41,8 @@ public class BungeeSender implements Sender {
     /**
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
      *
-     * @param sender {@link CommandSender} to wrap
+     * @param audiences the {@link BungeeAudiences} to get {@link Audience}
+     * @param sender    {@link CommandSender} to wrap
      */
     public BungeeSender(@NotNull BungeeAudiences audiences, @NotNull CommandSender sender) {
         this.audience = audiences.sender(sender);
