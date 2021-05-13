@@ -25,6 +25,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,6 +53,21 @@ public final class PaperCommandFactory {
     }
 
     /**
+     * Searches for {@link PluginCommand} that is named as {@link Command#getName()}
+     * and register the command if it exists.
+     *
+     * @param sourcePlugin the plugin to search for the command
+     * @param command      the command to register
+     */
+    public static void registerIfExists(@NotNull JavaPlugin sourcePlugin, @NotNull Command command) {
+        PluginCommand pluginCommand = sourcePlugin.getCommand(command.getName());
+
+        if (pluginCommand != null) {
+            register(pluginCommand, command);
+        }
+    }
+
+    /**
      * Registers the command.
      * <p>
      * If you register a command with this method, it will be executed asynchronously.
@@ -68,6 +84,22 @@ public final class PaperCommandFactory {
      */
     public static void registerAsync(@NotNull PluginCommand target, @NotNull Command command) {
         registerAsync(target, command, Executors.newSingleThreadExecutor());
+    }
+
+    /**
+     * Searches for {@link PluginCommand} that is named as {@link Command#getName()}
+     * and register the command if it exists.
+     *
+     * @param sourcePlugin the plugin to search for the command
+     * @param command      the command to register
+     * @see PaperCommandFactory#registerAsync(PluginCommand, Command)
+     */
+    public static void registerAsyncIfExists(@NotNull JavaPlugin sourcePlugin, @NotNull Command command) {
+        PluginCommand pluginCommand = sourcePlugin.getCommand(command.getName());
+
+        if (pluginCommand != null) {
+            registerAsync(pluginCommand, command);
+        }
     }
 
     /**
@@ -90,6 +122,24 @@ public final class PaperCommandFactory {
 
         target.setExecutor(paperCommand);
         target.setTabCompleter(paperCommand);
+    }
+
+    /**
+     * Searches for {@link PluginCommand} that is named as {@link Command#getName()}
+     * and register the command if it exists.
+     *
+     * @param sourcePlugin the plugin to search for the command
+     * @param command      the command to register
+     * @param executor     the executor to run command
+     * @see PaperCommandFactory#registerAsync(PluginCommand, Command)
+     */
+    public static void registerAsyncIfExists(@NotNull JavaPlugin sourcePlugin, @NotNull Command command,
+                                             @NotNull Executor executor) {
+        PluginCommand pluginCommand = sourcePlugin.getCommand(command.getName());
+
+        if (pluginCommand != null) {
+            registerAsync(pluginCommand, command, executor);
+        }
     }
 
     private static class PaperCommandImpl implements CommandExecutor, TabCompleter {
