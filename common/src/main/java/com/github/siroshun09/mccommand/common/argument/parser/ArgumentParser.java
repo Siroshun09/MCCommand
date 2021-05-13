@@ -35,7 +35,7 @@ public interface ArgumentParser<T> {
      * Creates an instance of the parser from {@link Function}.
      *
      * @param function the {@link Function} to parse {@link Argument} to a specific type.
-     * @param <R> the value type
+     * @param <R>      the value type
      * @return the {@link ArgumentParser} instance
      */
     static <R> ArgumentParser<R> of(@NotNull Function<Argument, R> function) {

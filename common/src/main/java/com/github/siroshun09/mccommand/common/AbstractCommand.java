@@ -36,9 +36,9 @@ public abstract class AbstractCommand implements Command {
     /**
      * Creates an {@link AbstractCommand}.
      *
-     * @param name the command name
+     * @param name       the command name
      * @param permission the permission to execute this command
-     * @param aliases the aliases of this command
+     * @param aliases    the aliases of this command
      */
     public AbstractCommand(@NotNull String name, @Nullable String permission, @Nullable Set<String> aliases) {
         Objects.requireNonNull(name);
@@ -55,7 +55,7 @@ public abstract class AbstractCommand implements Command {
     /**
      * Creates an {@link AbstractCommand}.
      *
-     * @param name the command name
+     * @param name       the command name
      * @param permission the permission to execute this command
      */
     public AbstractCommand(@NotNull String name, @Nullable String permission) {
@@ -65,7 +65,7 @@ public abstract class AbstractCommand implements Command {
     /**
      * Creates an {@link AbstractCommand}.
      *
-     * @param name the command name
+     * @param name    the command name
      * @param aliases the aliases of this command
      */
     public AbstractCommand(@NotNull String name, @Nullable Set<String> aliases) {
