@@ -40,8 +40,8 @@ public class BukkitSender implements Sender {
     /**
      * Create {@link Sender} to use in the library with a {@link CommandSender}.
      *
-     * @param audiences the audiences
-     * @param sender   {@link CommandSender} to wrap
+     * @param audiences the {@link BukkitAudiences} to get {@link Audience}
+     * @param sender    {@link CommandSender} to wrap
      */
     public BukkitSender(@NotNull BukkitAudiences audiences, @NotNull CommandSender sender) {
         this.audience = audiences.sender(sender);
