@@ -49,8 +49,8 @@
 <span class="sourceLineNo">040</span><a id="line.40">    /**</a>
 <span class="sourceLineNo">041</span><a id="line.41">     * Create {@link Sender} to use in the library with a {@link CommandSender}.</a>
 <span class="sourceLineNo">042</span><a id="line.42">     *</a>
-<span class="sourceLineNo">043</span><a id="line.43">     * @param audiences the audiences</a>
-<span class="sourceLineNo">044</span><a id="line.44">     * @param sender   {@link CommandSender} to wrap</a>
+<span class="sourceLineNo">043</span><a id="line.43">     * @param audiences the {@link BukkitAudiences} to get {@link Audience}</a>
+<span class="sourceLineNo">044</span><a id="line.44">     * @param sender    {@link CommandSender} to wrap</a>
 <span class="sourceLineNo">045</span><a id="line.45">     */</a>
 <span class="sourceLineNo">046</span><a id="line.46">    public BukkitSender(@NotNull BukkitAudiences audiences, @NotNull CommandSender sender) {</a>
 <span class="sourceLineNo">047</span><a id="line.47">        this.audience = audiences.sender(sender);</a>
