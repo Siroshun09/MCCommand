@@ -23,7 +23,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
 import java.util.UUID;
 
 public class PaperSender implements Sender {
@@ -70,14 +69,5 @@ public class PaperSender implements Sender {
     @Override
     public @NotNull Audience getAudience() {
         return sender;
-    }
-
-    @Override
-    public @NotNull Locale getLocale() {
-        if (sender instanceof Player) {
-            return ((Player) sender).locale();
-        } else {
-            return Locale.getDefault();
-        }
     }
 }

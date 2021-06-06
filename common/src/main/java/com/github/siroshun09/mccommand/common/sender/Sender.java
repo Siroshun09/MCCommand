@@ -16,7 +16,7 @@
 
 package com.github.siroshun09.mccommand.common.sender;
 
-import com.github.siroshun09.mcmessage.MessageReceiver;
+import com.github.siroshun09.adventureextender.MessageReceivable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -24,7 +24,7 @@ import java.util.UUID;
 /**
  * Interface that wraps a CommandSender that is different on different platforms.
  */
-public interface Sender extends MessageReceiver {
+public interface Sender extends MessageReceivable {
 
     /**
      * Gets the {@link UUID} of the command sender.

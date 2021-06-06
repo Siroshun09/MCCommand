@@ -25,7 +25,6 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -102,20 +101,6 @@ public class BungeeSender implements Sender {
     @Override
     public boolean isConsole() {
         return sender.equals(ProxyServer.getInstance().getConsole());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public @NotNull Locale getLocale() {
-        Locale locale = null;
-
-        if (sender instanceof ProxiedPlayer) {
-            locale = ((ProxiedPlayer) sender).getLocale();
-        }
-
-        return locale != null ? locale : Locale.getDefault();
     }
 
     /**
