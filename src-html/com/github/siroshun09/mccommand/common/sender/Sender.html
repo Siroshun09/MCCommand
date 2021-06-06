@@ -25,7 +25,7 @@
 <span class="sourceLineNo">016</span><a id="line.16"></a>
 <span class="sourceLineNo">017</span><a id="line.17">package com.github.siroshun09.mccommand.common.sender;</a>
 <span class="sourceLineNo">018</span><a id="line.18"></a>
-<span class="sourceLineNo">019</span><a id="line.19">import com.github.siroshun09.mcmessage.MessageReceiver;</a>
+<span class="sourceLineNo">019</span><a id="line.19">import com.github.siroshun09.adventureextender.MessageReceivable;</a>
 <span class="sourceLineNo">020</span><a id="line.20">import org.jetbrains.annotations.NotNull;</a>
 <span class="sourceLineNo">021</span><a id="line.21"></a>
 <span class="sourceLineNo">022</span><a id="line.22">import java.util.UUID;</a>
@@ -33,7 +33,7 @@
 <span class="sourceLineNo">024</span><a id="line.24">/**</a>
 <span class="sourceLineNo">025</span><a id="line.25"> * Interface that wraps a CommandSender that is different on different platforms.</a>
 <span class="sourceLineNo">026</span><a id="line.26"> */</a>
-<span class="sourceLineNo">027</span><a id="line.27">public interface Sender extends MessageReceiver {</a>
+<span class="sourceLineNo">027</span><a id="line.27">public interface Sender extends MessageReceivable {</a>
 <span class="sourceLineNo">028</span><a id="line.28"></a>
 <span class="sourceLineNo">029</span><a id="line.29">    /**</a>
 <span class="sourceLineNo">030</span><a id="line.30">     * Gets the {@link UUID} of the command sender.</a>
