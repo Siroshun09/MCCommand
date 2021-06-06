@@ -81,9 +81,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.siroshun09.mcmessage</groupId>
-            <artifactId>mcmessage</artifactId>
-            <version>2.2.1</version>
+            <groupId>com.github.siroshun09.adventureextender</groupId>
+            <artifactId>adventureextender</artifactId>
+            <version>1.1.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
