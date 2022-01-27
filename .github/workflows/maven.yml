@@ -17,7 +17,11 @@ jobs:
       - name: Move built jars
         run: |
           mkdir staging
-          cp -r target staging
+          mv target staging/parent
+          mv bukkit/target staging/bukkit
+          mv bungee/target staging/bungee
+          mv common/target staging/common
+          mv paper/target staging/paper
       - uses: actions/upload-artifact@v2.3.1
         with:
           name: Package
