@@ -135,6 +135,12 @@
                 </repository>
             </distributionManagement>
         </profile>
+        <profile>
+            <id>skip-javadoc</id>
+            <properties>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
