@@ -16,7 +16,7 @@ A library to help implement Bukkit and BungeeCord commands.
     <dependency>
         <groupId>com.github.siroshun09.mccommand</groupId>
         <artifactId>bukkit</artifactId>
-        <version>3.0.0</version>
+        <version>4.0.0-SNAPSHOT</version>
     </dependency>
 ```
 
@@ -24,7 +24,7 @@ A library to help implement Bukkit and BungeeCord commands.
     <dependency>
         <groupId>com.github.siroshun09.mccommand</groupId>
         <artifactId>bungee</artifactId>
-        <version>3.0.0</version>
+        <version>4.0.0-SNAPSHOT</version>
     </dependency>
 ```
 

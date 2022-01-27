@@ -21,7 +21,7 @@
     <parent>
         <artifactId>mccommand</artifactId>
         <groupId>com.github.siroshun09.mccommand</groupId>
-        <version>3.0.0</version>
+        <version>4.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>com.github.siroshun09.mccommand</groupId>
             <artifactId>common</artifactId>
-            <version>3.0.0</version>
+            <version>4.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
